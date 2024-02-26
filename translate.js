@@ -1,5 +1,3 @@
-const fetch = require('node-fetch');
-
 async function translate_text(text) {
     const translate = await import("translate");
     translate.engine = "deepl"; 

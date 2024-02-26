@@ -22,9 +22,6 @@ app.post('/translate', async (req, res) => {
         res.status(200).json({ translation: translatedText });
     } catch (error) {
         console.error(error);
-        if (error instanceof TranslateError) {
-            return res.status(400).json({ error: "Translation error: " + error.message });
-        }
         res.status(500).json({ error: "Internal Server Error" });
     }
 });

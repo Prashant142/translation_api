@@ -1,7 +1,7 @@
-async function translate_text(text) {
+async function translate_text(text, lang) {
     const translate = await import("translate");
     translate.engine = "deepl"; 
-    const translatedText = await translate.default(text, "fr");
+    const translatedText = await translate.default(text, lang);
     return translatedText;
 }
 

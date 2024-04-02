@@ -12,12 +12,14 @@ app.post('/translate', async (req, res) => {
             return res.status(400).json({ error: "Missing 'text' field in request body" });
         }
 
-        const { text } = req.body;
-        
+        var { text , lang} = req.body;
+        if (!lang){
+            lang = "fr"
+        }
         if (typeof text !== 'string' || text.trim() === '') {
             return res.status(400).json({ error: "'text' field must be a non-empty string" });
         }
-        const translatedText = await translate_text(text);
+        const translatedText = await translate_text(text, lang);
 
         res.status(200).json({ translation: translatedText });
     } catch (error) {
